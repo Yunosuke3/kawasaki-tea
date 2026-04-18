@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>川崎珍珠奶茶 | KAWASAKI TEA Premium — 三里屯</title>
+  <meta name="description" content="岡山から世界へ。店内仕込みの生タピオカと黒糖の深み。モバイルオーダー・会員スタンプカードに対応。三里屯本店 / Sanlitun Flagship。" />
+  <meta name="theme-color" content="#b0162f" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="川崎珍珠奶茶 | KAWASAKI TEA Premium">
+  <meta property="og:description" content="岡山から世界へ。本物の「もちもち」を、できたてのまま丁寧に。モバイルオーダー・会員スタンプ対応。">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Inline favicon (SVG, premium monogram) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b0162f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='serif' font-size='38' font-weight='900' fill='%23fdfaf7'%3E川%3C/text%3E%3Ccircle cx='49' cy='49' r='4' fill='%23d4af37'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b0162f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-family='serif' font-size='38' font-weight='900' fill='%23fdfaf7'%3E川%3C/text%3E%3C/svg%3E">
+  <!-- Inline PWA manifest -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"川崎珍珠奶茶","short_name":"KAWASAKI","start_url":".","display":"standalone","background_color":"%23ffffff","theme_color":"%23b0162f","icons":[{"src":"data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23b0162f%22/><text x=%2250%25%22 y=%2256%25%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2238%22 font-weight=%22900%22 fill=%22%23fdfaf7%22>%E5%B7%9D</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}'>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Montserrat:wght@500;700;900&family=Noto+Serif+JP:wght@700;900&family=Noto+Serif+SC:wght@900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #b0162f;
+      --primary-d: #7e0d20;
+      --gold: #d4af37;
+      --gold-d: #b8932e;
+      --bg: #ffffff;
+      --sand: #fdfaf7;
+      --sand-2: #f7ede0;
+      --text: #1a1a1a;
+      --muted: #777;
+      --line: #eee;
+      --header-h: 85px;
+      --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    @media (max-width: 480px) { html { font-size: 14.5px; } }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 6px; }
+    button:focus-visible { outline-offset: 4px; }
+
+    #pb {
+      position: fixed; top: 0; left: 0; width: 0%; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      z-index: 10000;
+      box-shadow: 0 0 20px rgba(176,22,47,0.4);
+    }
+    header {
+      position: fixed; top: 0; width: 100%; height: var(--header-h);
+      background: rgba(255, 255, 255, 0.96); backdrop-filter: saturate(1.3) blur(18px);
+      -webkit-backdrop-filter: saturate(1.3) blur(18px);
+      border-bottom: 1px solid rgba(176,22,47,0.12); z-index: 9000;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: all 0.4s var(--ease-smooth);
+    }
+    header.scrolled { height: 65px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom-color: rgba(176,22,47,0.25); }
+    .logo {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 900;
+      color: var(--primary);
+      font-size: 1.45rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    .logo::after {
+      content: ''; position: absolute; right: -10px; top: 3px;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+    }
+    .quick-nav { display: flex; gap: 8px; overflow-x: auto; padding: 8px 15px; width: 100%; justify-content: center; scrollbar-width: none; }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .nav-item {
+      font-size: 11px; font-weight: 900; color: var(--text); background: transparent;
+      padding: 6px 14px; border: 1px solid var(--line); border-radius: 20px; cursor: pointer; transition: 0.3s var(--ease-smooth);
+      font-family: 'Montserrat'; letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .nav-item:hover { border-color: var(--primary); }
+    .nav-item.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 6px 14px rgba(176,22,47,0.25); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: 1.1s var(--ease-smooth); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* HERO */
+    .hero {
+      height: 100vh; min-height: 560px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      padding: 0 18px;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-60px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(212,175,55,0.10), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(176,22,47,0.10), transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(0,0,0,0.04), transparent 60%);
+      pointer-events:none;
+      filter: blur(8px);
+      z-index:-2;
+    }
+    .hero-bg-text {
+      position: absolute; font-size: 22vw; font-weight: 900; color: rgba(176, 22, 47, 0.035);
+      z-index: -1; white-space: nowrap; font-family: 'Montserrat'; pointer-events: none;
+      animation: drift 20s linear infinite alternate;
+      will-change: transform;
+    }
+    @keyframes drift { from { transform: translateX(-8%); } to { transform: translateX(8%); } }
+    .hero h1 {
+      font-family: 'Noto Serif JP';
+      font-size: clamp(2.5rem, 10vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .lux-title {
+      display:inline-block;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,0.08));
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .lux-title .ch{
+      display:inline-block;
+      transform: translateY(12px);
+      opacity:0;
+      animation: popIn 900ms var(--ease-smooth) forwards;
+      text-shadow: 0 20px 50px rgba(176,22,47,0.06);
+    }
+    @keyframes popIn{ to { transform: translateY(0); opacity:1; } }
+    .lux-sub {
+      min-height: 1.7em;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 1px;
+      font-size: 1.02rem;
+      opacity: 0.95;
+    }
+    .hint-row{
+      margin-top: 18px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      font-size: 0.78rem;
+      color:#666;
+    }
+    .chip{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 12px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      font-weight: 800;
+    }
+    .scroll-cue {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-size: 9px; letter-spacing: 3px; color: #aaa;
+      font-family: 'Montserrat'; font-weight: 900;
+      animation: cueFloat 2.4s var(--ease-smooth) infinite;
+      pointer-events: none;
+    }
+    .scroll-cue .line {
+      width: 1px; height: 28px; background: linear-gradient(to bottom, transparent, var(--primary));
+    }
+    @keyframes cueFloat { 0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.7; } 50% { transform: translateX(-50%) translateY(8px); opacity: 1; } }
+
+    section { padding: clamp(48px, 9vh, 96px) 25px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: 'Montserrat'; font-size: 0.7rem; color: var(--gold); letter-spacing: 4px; font-weight: 900; margin-bottom: 10px; display: block; text-align: center; }
+    .section-title { font-family: 'Noto Serif JP'; font-size: clamp(1.6rem, 4vw, 2.2rem); text-align: center; margin-bottom: 40px; font-weight: 900; }
+    .section-title::after { content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin: 15px auto; }
+
+    /* OUR CRAFT */
+    .craft-container { background: var(--sand); padding: 44px 22px; border-radius: 30px; position: relative; overflow: hidden; border: 1px solid rgba(197, 160, 89, 0.14); }
+    .craft-text { position: relative; z-index: 2; line-height: 2; font-size: 0.95rem; color: #333; text-align: center; }
+    .craft-float { position: absolute; font-size: 8rem; color: rgba(176, 22, 47, 0.04); bottom: -20px; right: -10px; font-weight: 900; font-family: 'Montserrat'; pointer-events: none; }
+    .craft-note{ margin-top: 22px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .note{
+      font-size:0.78rem;
+      padding:12px 14px;
+      border-radius:14px;
+      background:white;
+      border:1px solid var(--line);
+      max-width: 460px;
+      text-align:left;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+    .note strong{ color: var(--primary); }
+
+    /* MENU */
+    .menu-intro {
+      display: flex; justify-content: center; align-items: center; gap: 12px;
+      margin: -18px 0 22px; font-size: 0.74rem; color: var(--muted); font-family: 'Montserrat'; font-weight: 700; letter-spacing: 2px;
+    }
+    .menu-intro .currency-badge {
+      padding: 3px 10px; background: var(--sand-2); color: var(--primary-d);
+      border-radius: 999px; font-size: 0.68rem; letter-spacing: 1px;
+    }
+    .filter-wrap { display: flex; justify-content: center; gap: 8px; margin-bottom: 30px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 20px; border: 1px solid var(--line); border-radius: 30px; background: white; font-weight: 900; cursor: pointer; transition: 0.35s var(--ease-smooth); font-size: 0.75rem; }
+    .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 6px 14px rgba(176,22,47,0.2); }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .menu-card {
+      background: white; border: 1px solid #f5f5f5; border-radius: 18px; padding: 18px 12px 16px;
+      text-align: center; cursor: pointer; transition: 0.4s var(--ease-smooth);
+      position: relative; overflow: hidden;
+      user-select:none;
+      touch-action: manipulation;
+    }
+    .menu-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(176,22,47,0.08); }
+    .menu-card::before {
+      content: 'ORDER  ·  订购';
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-d));
+      color: white; display: flex; align-items: center; justify-content: center; font-weight: 900;
+      transform: translateY(100%); transition: 0.35s var(--ease-smooth); z-index: 3; font-size: 0.72rem; letter-spacing: 3px;
+    }
+    .menu-card:hover::before { transform: translateY(0); }
+    .menu-thumb {
+      width: 62px; height: 62px; margin: 0 auto 10px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif SC', 'Noto Serif JP', serif; font-size: 1.7rem; font-weight: 900;
+      color: #fff8f0; position: relative;
+      box-shadow: inset 0 -8px 14px rgba(0,0,0,0.15), 0 8px 18px rgba(0,0,0,0.08);
+    }
+    .menu-thumb::after {
+      content: ''; position: absolute; inset: 4px;
+      border-radius: 50%; border: 1px dashed rgba(255,255,255,0.35);
+      pointer-events: none;
+    }
+    .menu-card h3 {
+      font-size: 0.86rem; margin-bottom: 6px; font-weight: 900; font-family: 'Noto Serif JP';
+      line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center;
+    }
+    .price-tag { font-family: 'Montserrat'; font-size: 1.1rem; color: var(--primary); font-weight: 900; letter-spacing: 0.5px; }
+    .price-tag .unit { font-size: 0.62rem; color: var(--muted); margin-left: 2px; font-weight: 700; letter-spacing: 1px; }
+    .price-tag .ysign { font-size: 0.72rem; margin-right: 1px; vertical-align: 2px; }
+    .tag-badge {
+      display: inline-block; margin-top: 6px;
+      font-family: 'Montserrat'; font-size: 0.56rem; font-weight: 900;
+      letter-spacing: 2px; padding: 3px 8px; border-radius: 999px;
+      background: rgba(212,175,55,0.12); color: var(--gold-d);
+    }
+    .menu-foot{ margin-top: 22px; text-align:center; font-size:0.8rem; color: var(--muted); }
+
+    /* JOIN */
+    .tab-nav { display: flex; background: #f2f2f2; border-radius: 50px; padding: 5px; margin-bottom: 30px; max-width: 350px; margin-left: auto; margin-right: auto; }
+    .tab-trigger { flex: 1; padding: 10px; border: none; background: none; font-weight: 900; border-radius: 50px; cursor: pointer; color: #777; font-size: 0.8rem; transition: 0.3s; }
+    .tab-trigger.active { background: white; color: var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.06); }
+    .tab-content { display: none; padding: 30px 20px; background: var(--sand); border-radius: 30px; border: 1px solid var(--line); }
+    .tab-content.active { display: block; animation: fadeIn 0.6s; }
+    .join-form input, .join-form textarea {
+      width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd;
+      font-family: 'Noto Sans JP'; font-size: 0.9rem; transition: 0.25s; background: #fff;
+    }
+    .join-form input:focus, .join-form textarea:focus{
+      outline:none;
+      border-color: rgba(176,22,47,0.45);
+      box-shadow: 0 0 0 4px rgba(176,22,47,0.08);
+    }
+    .join-btn { background: var(--primary); color: white; width: 100%; padding: 15px; border: none; border-radius: 50px; font-weight: 900; cursor: pointer; transition: 0.3s var(--ease-smooth); box-shadow: 0 10px 24px rgba(176,22,47,0.22); font-size: 0.92rem; letter-spacing: 1px; }
+    .join-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(176,22,47,0.3); }
+    .join-btn:active { transform: translateY(0); }
+    .join-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .helper{ margin-top: 12px; font-size: 0.78rem; color: var(--muted); text-align: center; }
+
+    /* QA */
+    .qa-item { border-bottom: 1px solid var(--line); }
+    .qa-q { padding: 20px 10px; font-weight: 900; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; gap: 12px; }
+    .qa-q .plus { display: inline-block; transition: transform 0.35s var(--ease-smooth); color: var(--primary); font-weight: 900; font-size: 1.1rem; flex-shrink: 0; }
+    .qa-item.open .qa-q .plus { transform: rotate(45deg); }
+    .qa-a { max-height: 0; overflow: hidden; transition: 0.5s var(--ease-smooth); color: #555; font-size: 0.85rem; padding: 0 10px; }
+    .qa-item.open { background: var(--sand); border-radius: 15px; }
+    .qa-item.open .qa-a { max-height: 280px; padding: 0 10px 20px; }
+
+    /* Access / Map */
+    .map-shell{
+      border-radius:25px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      position: relative;
+      background:#fff;
+    }
+    .map-actions{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin: 18px 0 0; }
+    .btn-ghost{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight: 900;
+      font-size:0.8rem;
+      transition: 0.25s;
+    }
+    .btn-ghost:hover{ transform: translateY(-1px); border-color: rgba(176,22,47,0.3); }
+    .btn-ghost.primary{ background: var(--text); color:#fff; border-color: var(--text); }
+
+    /* Modal */
+    #modal { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(6px); }
+    .modal-card { background: white; width: 100%; max-width: 460px; max-height: 92vh; overflow-y: auto; border-radius: 26px; padding: 36px 26px 26px; position: relative; transform: scale(0.94) translateY(10px); opacity: 0; transition: 0.32s var(--ease-smooth); }
+    #modal.open { display: flex; }
+    #modal.open .modal-card { transform: scale(1) translateY(0); opacity: 1; }
+    .modal-card::-webkit-scrollbar { width: 4px; }
+    .modal-card::-webkit-scrollbar-thumb { background: rgba(176,22,47,0.25); border-radius: 4px; }
+    .modal-x { position:absolute; right:18px; top:14px; width:36px; height:36px; border-radius:50%; border:none; background: #f5f5f5; font-size:1.25rem; color:#999; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:0.2s; }
+    .modal-x:hover { background: var(--primary); color: white; }
+
+    /* Modal: order options */
+    .opt-group { margin-top: 16px; }
+    .opt-group .opt-label { font-size: 0.76rem; font-weight: 900; color: var(--text); margin-bottom: 8px; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Montserrat'; }
+    .opt-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .opt-chip {
+      padding: 8px 14px; background: #fff; border: 1px solid #e8e8e8; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 800; cursor: pointer; transition: 0.22s var(--ease-smooth);
+      color: #555;
+    }
+    .opt-chip:hover { border-color: rgba(176,22,47,0.35); color: var(--primary); }
+    .opt-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 6px 14px rgba(176,22,47,0.2); transform: translateY(-1px); }
+
+    .qty-row { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; padding: 12px 16px; background: var(--sand); border-radius: 14px; }
+    .qty-row .lbl { font-size: 0.78rem; font-weight: 900; letter-spacing: 1.5px; font-family: 'Montserrat'; }
+    .qty-ctrl { display: flex; align-items: center; gap: 14px; }
+    .qty-ctrl button {
+      width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--primary);
+      background: #fff; color: var(--primary); font-weight: 900; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    .qty-ctrl button:hover { background: var(--primary); color: #fff; transform: scale(1.05); }
+    .qty-ctrl span { min-width: 22px; text-align: center; font-weight: 900; font-family: 'Montserrat'; font-size: 1rem; }
+
+    .btn-add {
+      width: 100%; padding: 15px; margin-top: 18px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-d));
+      color: #fff; border: none; border-radius: 999px;
+      font-weight: 900; font-size: 0.92rem; letter-spacing: 1px; cursor: pointer;
+      box-shadow: 0 12px 28px rgba(176,22,47,0.28);
+      transition: 0.25s var(--ease-smooth);
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    }
+    .btn-add .side { opacity: 0.85; font-weight: 700; font-family: 'Montserrat'; font-size: 0.85rem; }
+    .btn-add:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(176,22,47,0.35); }
+    .btn-add:active { transform: translateY(0); }
+
+    /* Cart FAB */
+    .cart-fab {
+      position: fixed; right: 18px; bottom: 18px; width: 60px; height: 60px;
+      border-radius: 50%; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-d));
+      color: #fff; z-index: 8500;
+      box-shadow: 0 14px 32px rgba(176,22,47,0.35);
+      display: flex; align-items: center; justify-content: center;
+      transition: 0.3s var(--ease-smooth);
+    }
+    .cart-fab:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 20px 40px rgba(176,22,47,0.45); }
+    .cart-fab svg { width: 24px; height: 24px; }
+    .cart-fab.has-items { animation: fabPulse 2.4s ease-in-out infinite; }
+    @keyframes fabPulse {
+      0%, 100% { box-shadow: 0 14px 32px rgba(176,22,47,0.35); }
+      50% { box-shadow: 0 14px 32px rgba(176,22,47,0.35), 0 0 0 10px rgba(176,22,47,0.08); }
+    }
+    .cart-badge {
+      position: absolute; top: -4px; right: -4px;
+      min-width: 22px; height: 22px; padding: 0 6px;
+      background: var(--gold); color: var(--text);
+      border-radius: 999px; font-size: 0.7rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat'; border: 2px solid #fff;
+      animation: badgeIn 0.4s var(--ease-spring);
+    }
+    .cart-badge[data-count="0"] { display: none; }
+    @keyframes badgeIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+    /* Cart drawer */
+    #cart-drawer {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      z-index: 10000; display: none;
+      align-items: flex-end; justify-content: center;
+    }
+    #cart-drawer.open { display: flex; animation: fadeIn 0.25s; }
+    .cart-sheet {
+      background: #fff; width: 100%; max-width: 540px; max-height: 92vh;
+      border-radius: 28px 28px 0 0; padding: 22px 22px 28px;
+      overflow-y: auto; position: relative;
+      transform: translateY(100%); transition: transform 0.4s var(--ease-smooth);
+    }
+    #cart-drawer.open .cart-sheet { transform: translateY(0); }
+    .cart-sheet h3 { font-family: 'Noto Serif JP'; font-size: 1.2rem; text-align: center; margin-bottom: 4px; }
+    .cart-list { margin-top: 16px; }
+    .cart-row {
+      display: flex; gap: 12px; padding: 14px; background: var(--sand);
+      border-radius: 16px; margin-bottom: 10px; align-items: flex-start;
+      transition: 0.3s var(--ease-smooth);
+    }
+    .cart-row .thumb {
+      width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif SC', serif; font-size: 1.2rem; font-weight: 900;
+      color: #fff8f0;
+      box-shadow: inset 0 -6px 10px rgba(0,0,0,0.15);
+    }
+    .cart-row .info { flex: 1; min-width: 0; }
+    .cart-row .name { font-family: 'Noto Serif JP'; font-weight: 900; font-size: 0.88rem; line-height: 1.35; }
+    .cart-row .opts { font-size: 0.72rem; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+    .cart-row .unit { font-family: 'Montserrat'; font-weight: 900; color: var(--primary); font-size: 0.95rem; margin-top: 4px; }
+    .cart-row .row-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .cart-row .row-right .qty-ctrl button { width: 26px; height: 26px; font-size: 0.85rem; }
+    .cart-row .row-del { background: none; border: none; color: #aaa; font-size: 0.72rem; cursor: pointer; text-decoration: underline; padding: 0; }
+    .cart-row .row-del:hover { color: var(--primary); }
+
+    .cart-empty { text-align: center; padding: 36px 10px 14px; color: #888; }
+    .cart-empty .ico { font-size: 2.6rem; opacity: 0.5; margin-bottom: 10px; }
+    .cart-empty p { font-size: 0.85rem; line-height: 1.8; }
+
+    .pickup-wrap { margin-top: 18px; padding: 14px 16px; background: var(--sand); border-radius: 16px; }
+    .pickup-wrap .lbl { font-size: 0.74rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 10px; font-family: 'Montserrat'; }
+    .time-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .time-chips .opt-chip { flex: 1; text-align: center; min-width: 60px; padding: 9px 8px; }
+
+    .totals { margin-top: 16px; padding: 12px 4px; }
+    .total-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 4px 0; }
+    .total-row.grand { font-family: 'Noto Serif JP'; font-size: 1.15rem; color: var(--primary); border-top: 1px dashed #e0c8b0; padding-top: 12px; margin-top: 10px; font-weight: 900; }
+    .stamp-earn-hint {
+      margin-top: 10px; padding: 10px 12px; background: rgba(212,175,55,0.08);
+      border-radius: 10px; font-size: 0.78rem; color: #8a6d2a; text-align: center; font-weight: 800;
+    }
+
+    /* MEMBER — premium credit card style */
+    .member-card {
+      background: linear-gradient(135deg, #8e0e23 0%, var(--primary) 50%, var(--primary-d) 100%);
+      color: #fff; border-radius: 24px; padding: 28px 24px 24px; text-align: left;
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 50px rgba(176,22,47,0.22);
+      aspect-ratio: auto;
+    }
+    .member-card::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 90% 0%, rgba(212,175,55,0.22), transparent 35%),
+        radial-gradient(circle at 0% 100%, rgba(255,255,255,0.06), transparent 40%);
+      pointer-events: none;
+    }
+    .member-card .kanji-bg {
+      position: absolute; right: -20px; top: -10px; font-family: 'Noto Serif JP';
+      font-size: 11rem; font-weight: 900; color: rgba(255,255,255,0.05);
+      pointer-events: none; line-height: 1; letter-spacing: -6px;
+    }
+    .mc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; position: relative; z-index: 2; }
+    .mc-brand { font-family: 'Noto Serif JP'; font-size: 1rem; font-weight: 900; letter-spacing: 3px; }
+    .mc-brand small { display: block; font-family: 'Montserrat'; font-size: 0.55rem; letter-spacing: 4px; color: var(--gold); font-weight: 900; margin-top: 2px; }
+    .mc-chip {
+      width: 34px; height: 26px; border-radius: 6px;
+      background: linear-gradient(135deg, #e8c676, var(--gold-d));
+      position: relative;
+      box-shadow: inset 0 -4px 6px rgba(0,0,0,0.2);
+    }
+    .mc-chip::after {
+      content: ''; position: absolute; inset: 4px;
+      background:
+        linear-gradient(90deg, transparent 30%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.18) 34%, transparent 34%, transparent 64%, rgba(0,0,0,0.18) 64%, rgba(0,0,0,0.18) 68%, transparent 68%),
+        linear-gradient(0deg, transparent 30%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.18) 34%, transparent 34%, transparent 64%, rgba(0,0,0,0.18) 64%, rgba(0,0,0,0.18) 68%, transparent 68%);
+      border-radius: 3px;
+    }
+    .mc-middle { position: relative; z-index: 2; margin: 10px 0 18px; }
+    .mc-label { font-family: 'Montserrat'; font-size: 0.58rem; letter-spacing: 3px; color: rgba(255,255,255,0.75); font-weight: 900; }
+    .mc-stamps {
+      font-family: 'Montserrat'; font-weight: 900; line-height: 1;
+      font-size: 3.2rem; letter-spacing: 1px; margin-top: 4px;
+      display: flex; align-items: baseline; gap: 6px;
+    }
+    .mc-stamps small { font-size: 0.95rem; opacity: 0.6; }
+    .mc-hint { font-size: 0.82rem; opacity: 0.92; margin-top: 8px; }
+    .mc-bottom { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 2; margin-top: 10px; }
+    .mc-member-no {
+      font-family: 'Montserrat'; font-weight: 900; letter-spacing: 3px; font-size: 1rem;
+    }
+    .mc-member-no small { display: block; font-size: 0.55rem; letter-spacing: 3px; opacity: 0.6; font-weight: 700; margin-bottom: 2px; }
+    .mc-name { text-align: right; font-family: 'Noto Serif JP'; font-weight: 900; }
+    .mc-name small { display: block; font-family: 'Montserrat'; font-size: 0.55rem; letter-spacing: 3px; opacity: 0.6; font-weight: 700; margin-bottom: 2px; text-align: right; }
+
+    .stamp-board {
+      background: #fff; margin-top: 18px; border-radius: 22px; padding: 22px 20px;
+      border: 1px solid #f0e0d0; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+    .stamp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .stamp-cell {
+      aspect-ratio: 1; border-radius: 50%;
+      border: 2px dashed #e8d5b8; background: var(--sand);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif SC', 'Noto Serif JP', serif; font-weight: 900; color: #d8c89d;
+      font-size: 1.1rem; transition: 0.5s var(--ease-spring);
+      position: relative;
+    }
+    .stamp-cell.filled {
+      border: 2px solid var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-d));
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(176,22,47,0.22);
+      animation: stampPop 0.5s var(--ease-spring);
+    }
+    .stamp-cell.reward {
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      color: #fff;
+    }
+    @keyframes stampPop { 0% { transform: scale(0.3) rotate(-12deg); } 70% { transform: scale(1.15) rotate(4deg); } 100% { transform: scale(1) rotate(0); } }
+    .stamp-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .stamp-actions button { flex: 1; min-width: 120px; }
+    .reward-btn {
+      padding: 13px; border: none; border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      color: #fff; font-weight: 900; font-size: 0.82rem; letter-spacing: 1.5px;
+      cursor: pointer; transition: 0.3s var(--ease-smooth);
+      box-shadow: 0 8px 22px rgba(212,175,55,0.3);
+    }
+    .reward-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(212,175,55,0.4); }
+    .reward-btn:disabled { background: #e8d5b8; cursor: not-allowed; opacity: 0.6; box-shadow: none; }
+
+    .member-form { margin-top: 18px; padding: 20px; background: var(--sand); border-radius: 18px; }
+    .member-form .label { font-size: 0.72rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 10px; color: #888; font-family: 'Montserrat'; }
+    .member-form input {
+      width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #ddd;
+      font-family: 'Noto Sans JP'; font-size: 0.9rem; margin-bottom: 10px;
+      transition: 0.25s; background: #fff;
+    }
+    .member-form input:focus {
+      outline: none; border-color: rgba(176,22,47,0.45);
+      box-shadow: 0 0 0 4px rgba(176,22,47,0.08);
+    }
+    .order-history { margin-top: 22px; }
+    .history-item {
+      background: #fff; border: 1px solid #f0e0d0; border-radius: 14px;
+      padding: 12px 14px; margin-bottom: 10px;
+    }
+    .history-head { display: flex; justify-content: space-between; font-size: 0.7rem; color: #999; font-family: 'Montserrat'; letter-spacing: 1px; }
+    .history-body { font-size: 0.82rem; font-weight: 800; margin-top: 4px; }
+    .history-total { font-family: 'Montserrat'; color: var(--primary); font-weight: 900; font-size: 0.92rem; margin-top: 4px; }
+
+    footer { padding: 60px 25px 110px; text-align: center; background: var(--text); color: white; }
+    footer .currency-note { margin-top: 14px; font-size: 0.68rem; letter-spacing: 2px; font-family: 'Montserrat'; opacity: 0.55; }
+
+    /* Toast */
+    #toast{
+      position: fixed; left: 50%; bottom: 94px;
+      transform: translateX(-50%) translateY(30px);
+      opacity: 0;
+      background: rgba(26,26,26,0.94);
+      color: #fff; padding: 12px 18px;
+      border-radius: 14px; font-size: 0.82rem; font-weight: 800;
+      z-index: 12000; transition: 0.35s var(--ease-smooth);
+      max-width: 92vw; text-align:center;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.2);
+    }
+    #toast.show{ transform: translateX(-50%) translateY(0); opacity: 1; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* Confirmation-specific */
+    .confirm-seal {
+      width: 72px; height: 72px; margin: 0 auto 14px;
+      border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-d));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: 'Noto Serif JP'; font-weight: 900; font-size: 1.6rem;
+      box-shadow: 0 10px 24px rgba(212,175,55,0.4);
+      animation: sealIn 0.7s var(--ease-spring);
+    }
+    @keyframes sealIn { 0% { transform: scale(0) rotate(-30deg); } 70% { transform: scale(1.1) rotate(6deg); } 100% { transform: scale(1) rotate(0); } }
+    .confirm-ticket {
+      background: var(--sand); border-radius: 20px; padding: 22px;
+      border: 1px dashed #e0c8b0; margin-top: 16px;
+      position: relative;
+    }
+    .confirm-order-id {
+      font-family: 'Montserrat'; font-weight: 900;
+      font-size: 1.85rem; letter-spacing: 3px; color: var(--primary);
+      text-align: center; line-height: 1.1;
+    }
+    .confirm-lines { margin-top: 16px; padding-top: 14px; border-top: 1px dashed #e0c8b0; font-size: 0.82rem; color: #555; }
+    .confirm-lines .row { display: flex; justify-content: space-between; padding: 4px 0; }
+    .confirm-lines .row strong { color: var(--primary); font-weight: 900; }
+  </style>
+</head>
+<body>
+<div id="pb"></div>
+<header id="header">
+  <div class="logo" onclick="smoothScroll('hero')">川崎珍珠奶茶</div>
+  <nav class="quick-nav">
+    <button class="nav-item" data-target="craft" onclick="smoothScroll('craft')">CRAFT</button>
+    <button class="nav-item" data-target="menu" onclick="smoothScroll('menu')">MENU</button>
+    <button class="nav-item" data-target="member" onclick="smoothScroll('member')">MEMBER</button>
+    <button class="nav-item" data-target="join" onclick="smoothScroll('join')">JOIN</button>
+    <button class="nav-item" data-target="qa" onclick="smoothScroll('qa')">Q&A</button>
+    <button class="nav-item" data-target="access" onclick="smoothScroll('access')">MAP</button>
+  </nav>
+</header>
+<main>
+  <div id="hero" class="hero">
+    <div class="hero-bg-text" id="parallax-text">KAWASAKI TEA KAWASAKI TEA</div>
+    <span class="section-label">OKAYAMA SPIRIT</span>
+    <h1 class="reveal">
+      <span id="lux-title" class="lux-title" aria-label="川崎珍珠奶茶"></span>
+    </h1>
+    <div id="typing-area" class="lux-sub"></div>
+    <div class="hint-row">
+      <div class="chip">店内仕込みの生タピオカ</div>
+      <div class="chip">黒糖の深みと弾力</div>
+      <div class="chip">三里屯 / Sanlitun</div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <section id="craft">
+    <span class="section-label">PHILOSOPHY</span>
+    <h2 class="section-title">OUR CRAFT</h2>
+    <div class="craft-container reveal">
+      <div class="craft-text">
+        <p style="font-weight: 900; font-size: 1.2rem; color: var(--primary); margin-bottom: 15px; font-family: 'Noto Serif JP';">毎日、店内で。</p>
+        <p>
+          粉から練り上げる生タピオカは、<br><strong>賞味期限わずか3時間。</strong><br>
+          圧倒的な弾力と黒糖の深みを、<br>最高な状態で召し上がっていただく。<br>
+          それが、岡山から持ってきた誇りです。
+        </p>
+        <div class="craft-note">
+          <div class="note"><strong>できたて</strong>の食感を守るため、仕込み・茹で時間は分単位で管理しています。</div>
+          <div class="note">お好みの甘さや氷量も、<strong>遠慮なく</strong>お申し付けください。スタッフが丁寧にご提案します。</div>
+        </div>
+      </div>
+      <div class="craft-float">PRIDE</div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <span class="section-label">COLLECTION</span>
+    <h2 class="section-title">MENU</h2>
+    <div class="menu-intro reveal">
+      <span>全商品</span>
+      <span class="currency-badge">人民元 / RMB 表示</span>
+    </div>
+    <div class="filter-wrap reveal">
+      <button class="filter-btn active" data-cat="all">ALL</button>
+      <button class="filter-btn" data-cat="popular">人気商品</button>
+      <button class="filter-btn" data-cat="latte">本格ラテ</button>
+    </div>
+    <div class="menu-grid" id="menu-grid"></div>
+    <div class="menu-foot reveal">
+      <br>
+      <small>※ カードをタップしてカスタマイズ・モバイルオーダーができます。</small>
+    </div>
+  </section>
+
+  <section id="member">
+    <span class="section-label">LOYALTY</span>
+    <h2 class="section-title">MEMBER</h2>
+    <div class="reveal">
+      <div class="member-card" id="member-card">
+        <div class="kanji-bg">茶</div>
+        <div class="mc-top">
+          <div class="mc-brand">KAWASAKI TEA<small>珍 珠 奶 茶 · PREMIUM</small></div>
+          <div class="mc-chip" aria-hidden="true"></div>
+        </div>
+        <div class="mc-middle">
+          <div class="mc-label">YOUR STAMPS</div>
+          <div class="mc-stamps"><span id="stamp-count">0</span><small>/ 10</small></div>
+          <div class="mc-hint" id="stamp-hint">10個で 1杯無料クーポンをプレゼント</div>
+        </div>
+        <div class="mc-bottom">
+          <div class="mc-member-no"><small>MEMBER NO.</small><span id="member-no">—— ——</span></div>
+          <div class="mc-name"><small>MEMBER</small><span id="member-display-name">GUEST</span></div>
+        </div>
+      </div>
+      <div class="stamp-board">
+        <div class="stamp-grid" id="stamp-grid"></div>
+        <div class="stamp-actions">
+          <button class="reward-btn" id="reward-btn" disabled>🎁 1杯無料クーポンを使う</button>
+        </div>
+      </div>
+      <div class="member-form">
+        <div class="label">MEMBER INFO</div>
+        <input type="text" id="member-name" placeholder="お名前（例：田中 太郎）">
+        <input type="text" id="member-contact" placeholder="電話番号 または WeChat ID">
+        <button class="join-btn" onclick="saveMember()">会員情報を保存する</button>
+        <p class="helper">※ この端末のブラウザ内のみに保存されます。スタンプ・履歴の紐付けに使用します。</p>
+      </div>
+      <div class="order-history" id="order-history-wrap" style="display:none;">
+        <div class="label" style="font-size:0.72rem; font-weight:900; letter-spacing:2px; color:#888; margin: 24px 0 10px; text-align:center; font-family:'Montserrat';">ORDER HISTORY</div>
+        <div id="order-history"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <span class="section-label">OPPORTUNITY</span>
+    <h2 class="section-title">JOIN US</h2>
+    <div class="tab-nav reveal">
+      <button id="btn-recruit" class="tab-trigger active" onclick="manualTab('recruit')">RECRUIT</button>
+      <button id="btn-fc" class="tab-trigger" onclick="manualTab('fc')">FRANCHISE</button>
+    </div>
+    <div id="recruit" class="tab-content active join-form">
+      <h3 style="text-align:center; margin-bottom:15px; font-size:1.1rem;">バリスタ・スタッフ応募</h3>
+      <p class="helper">ご入力内容は、確認のためにのみ使用します。差し支えない範囲でご記入ください。</p>
+      <input type="text" id="rec-name" placeholder="お名前">
+      <input type="tel" id="rec-tel" placeholder="電話番号 / WeChat ID">
+      <textarea id="rec-msg" placeholder="志望動機・勤務可能曜日など（任意）" style="height:80px;"></textarea>
+      <button class="join-btn" onclick="sendMail('recruit')">応募メールを作成する</button>
+    </div>
+    <div id="fc" class="tab-content join-form">
+      <h3 style="text-align:center; margin-bottom:15px; font-size:1.1rem;">フランチャイズ資料請求</h3>
+      <p class="helper">ご希望を伺い、条件に合った資料をご案内します。まずはお気軽にご連絡ください。</p>
+      <input type="text" id="fc-name" placeholder="ご担当者名 / 企業名">
+      <input type="email" id="fc-email" placeholder="メールアドレス">
+      <input type="text" id="fc-area" placeholder="開業希望エリア（任意）">
+      <button class="join-btn" onclick="sendMail('fc')">資料請求メールを作成する</button>
+    </div>
+  </section>
+
+  <section id="qa">
+    <span class="section-label">COMMON QUESTIONS</span>
+    <h2 class="section-title">Q & A</h2>
+    <div id="qa-container" class="reveal"></div>
+  </section>
+
+  <section id="access">
+    <span class="section-label">LOCATION</span>
+    <h2 class="section-title">ACCESS</h2>
+    <div style="text-align: center; margin-bottom: 18px;">
+      <p style="font-weight:900; font-size: 1rem;">三里屯本店 / Sanlitun Flagship</p>
+      <p style="color: #666; font-size: 0.8rem; margin-top: 5px;">北京市朝阳区三里屯路19号院 Taikoo Li 南区</p>
+    </div>
+    <div class="map-shell reveal">
+      <iframe
+        id="gm-embed"
+        title="Google Map"
+        width="100%"
+        height="320"
+        style="border:0;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Taikoo%20Li%20Sanlitun%20Beijing&output=embed">
+      </iframe>
+    </div>
+    <div class="map-actions reveal">
+      <button class="btn-ghost primary" onclick="openGoogleMaps()">Google Mapsで開く</button>
+      <button class="btn-ghost" onclick="routeFromHere()">現在地から経路</button>
+      <button class="btn-ghost" onclick="copyAddress()">住所をコピー</button>
+    </div>
+  </section>
+</main>
+
+<div id="modal" onclick="closeModal()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-x" onclick="closeModal()" aria-label="閉じる">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<button class="cart-fab" id="cart-fab" aria-label="カートを開く" onclick="openCart()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <path d="M16 10a4 4 0 0 1-8 0"></path>
+  </svg>
+  <span class="cart-badge" id="cart-badge" data-count="0">0</span>
+</button>
+
+<div id="cart-drawer" onclick="closeCart()">
+  <div class="cart-sheet" onclick="event.stopPropagation()">
+    <button class="modal-x" onclick="closeCart()" aria-label="閉じる" style="position:absolute;right:18px;top:14px;">×</button>
+    <span class="section-label">YOUR ORDER</span>
+    <h3>ご注文内容</h3>
+    <div id="cart-list" class="cart-list"></div>
+    <div id="cart-empty" class="cart-empty" style="display:none;">
+      <div class="ico">🧋</div>
+      <p>カートはまだ空です。<br>MENU からお好みの一杯をお選びください。</p>
+      <br>
+      <button class="btn-ghost" onclick="closeCart(); smoothScroll('menu');">メニューを見る</button>
+    </div>
+    <div id="cart-footer" style="display:none;">
+      <div class="pickup-wrap">
+        <div class="lbl">PICKUP TIME — 受け取り時間の目安</div>
+        <div class="time-chips" id="pickup-chips">
+          <div class="opt-chip active" data-min="15">15分後</div>
+          <div class="opt-chip" data-min="30">30分後</div>
+          <div class="opt-chip" data-min="45">45分後</div>
+          <div class="opt-chip" data-min="60">60分後</div>
+        </div>
+      </div>
+      <div class="totals">
+        <div class="total-row"><span>小計 <small style="color:#999;">Subtotal</small></span><span id="sum-sub">¥0 元</span></div>
+        <div class="total-row" id="row-coupon" style="display:none; color:var(--gold-d);"><span>無料クーポン <small>Coupon</small></span><span id="sum-coupon">-¥0 元</span></div>
+        <div class="total-row grand"><span>合計 <small style="opacity:0.6; font-weight:700;">TOTAL</small></span><span id="sum-grand">¥0 元</span></div>
+      </div>
+      <div class="stamp-earn-hint" id="stamp-earn-hint">このご注文で スタンプ +0 個</div>
+      <label style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:0.78rem; color:#666; cursor:pointer;" id="coupon-row" hidden>
+        <input type="checkbox" id="use-coupon" style="width:auto; margin:0;">
+        <span>1杯無料クーポンを使用する（最も高い1杯に適用）</span>
+      </label>
+      <button class="join-btn" onclick="checkout()" style="margin-top:14px;">注文を確定する</button>
+      <p class="helper">店頭でのお支払いとなります（人民元 / 各種QR決済）。スタッフに注文番号をお伝えください。</p>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<footer>
+  <div class="logo" style="color:white; margin-bottom: 15px; font-size: 1.1rem;">川崎珍珠奶茶</div>
+  <div style="font-size: 9px; opacity: 0.5; letter-spacing: 3px;">KAWASAKI TEA BEIJING © 2024</div>
+  <div class="currency-note">表記通貨：人民元 RMB · 店頭お支払い対応</div>
+</footer>
+<script>
+  /***********************
+   * Utils
+   ***********************/
+  const $ = (s, el=document) => el.querySelector(s);
+  const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => t.classList.remove('show'), 1800);
+  }
+  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+  // 人民元 formatter — 「¥28 元」 (CN¥/RMB を明示)
+  function rmb(n){ return '¥' + Number(n).toLocaleString('zh-CN') + ' 元'; }
+  // コンパクト版（メニューカード等、小さなスペース用）
+  function rmbCompact(n){ return n; } // returns raw number; unit label is rendered separately
+
+  /***********************
+   * localStorage helpers
+   ***********************/
+  const LS = {
+    cart: 'kawasaki_cart_v1',
+    stamps: 'kawasaki_stamps_v1',
+    member: 'kawasaki_member_v1',
+    orders: 'kawasaki_orders_v1',
+    coupons: 'kawasaki_coupons_v1',
+    memberNo: 'kawasaki_memberno_v1'
+  };
+  function load(key, fallback){
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
+    catch(e){ return fallback; }
+  }
+  function save(key, v){
+    try { localStorage.setItem(key, JSON.stringify(v)); } catch(e){}
+  }
+  function ensureMemberNo(){
+    let no = load(LS.memberNo, null);
+    if (!no) {
+      // 6桁 + KT prefix
+      no = 'KT-' + String(Math.floor(Math.random()*900000+100000));
+      save(LS.memberNo, no);
+    }
+    return no;
+  }
+
+  /***********************
+   * 1) HERO
+   ***********************/
+  const titleText = "川崎珍珠奶茶";
+  const lux = $('#lux-title');
+  function buildLuxTitle(){
+    lux.innerHTML = '';
+    [...titleText].forEach((ch, i) => {
+      const sp = document.createElement('span');
+      sp.className = 'ch';
+      sp.textContent = ch;
+      sp.style.animationDelay = (i * 70) + 'ms';
+      sp.style.transform = `translateY(${10 + (i%2?2:0)}px)`;
+      lux.appendChild(sp);
+    });
+    if (lux.children.length >= 2) {
+      const br = document.createElement('br');
+      lux.insertBefore(br, lux.children[2]);
+    }
+    for (let i = 2; i < lux.children.length; i++){
+      if (lux.children[i].classList && lux.children[i].classList.contains('ch')) {
+        lux.children[i].style.color = 'var(--primary)';
+      }
+    }
+  }
+  function attachHeroTilt(){
+    const el = lux.closest('.lux-title') || lux;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    function animate(){
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      el.style.transform = `rotateX(${(-cy)}deg) rotateY(${(cx)}deg) translateY(-2px)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+    window.addEventListener('mousemove', (e) => {
+      const w = window.innerWidth, h = window.innerHeight;
+      const nx = (e.clientX / w - 0.5);
+      const ny = (e.clientY / h - 0.5);
+      tx = clamp(nx * 10, -10, 10);
+      ty = clamp(ny * 10, -10, 10);
+    }, { passive: true });
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.beta == null || e.gamma == null) return;
+      tx = clamp(e.gamma / 6, -10, 10);
+      ty = clamp(e.beta / 10, -10, 10);
+    }, { passive: true });
+  }
+  const typingMsg = "岡山から世界へ。本物の「もちもち」を、できたてのまま丁寧にお届けします。";
+  let msgIdx = 0;
+  function type() {
+    const area = $('#typing-area');
+    if (msgIdx < typingMsg.length) {
+      area.textContent += typingMsg.charAt(msgIdx);
+      msgIdx++;
+      setTimeout(type, 55);
+    }
+  }
+
+  /***********************
+   * 2) MENU / ORDER OPTIONS
+   ***********************/
+  // 各ドリンクに漢字シンボル + グラデ色を付与（プレミアム・ビジュアル）
+  const items = [
+    { id:'d01', cat: 'popular', kanji: '黒', grad:['#3a2218','#6b3a22'], name: '黒糖タピオカミルクティー', price: 28, desc: '黒糖で煮込んだ自慢の生タピオカ。香ばしさと深みを、最後の一口まで。', custom: 'おすすめ：甘さ半分 / 氷少なめ', badge: 'SIGNATURE' },
+    { id:'d02', cat: 'latte',   kanji: '抹', grad:['#2d5a2d','#5a8a3a'], name: '宇治抹茶ラテ',             price: 32, desc: '石臼挽き抹茶の香り。濃厚なのに、後味はすっと軽い。',         custom: 'おすすめ：甘さ普通 / トッピング追加' },
+    { id:'d03', cat: 'all',     kanji: '紅', grad:['#8a3a1a','#b76028'], name: 'アッサムミルクティー',     price: 26, desc: '芳醇な茶葉のスタンダード。迷ったらまずはここから。',       custom: 'おすすめ：甘さ30% / 氷普通' },
+    { id:'d04', cat: 'latte',   kanji: '焙', grad:['#4a2f14','#a1642d'], name: 'ほうじ茶ラテ',             price: 28, desc: '焙煎香がふわっと広がる一杯。香り派の方に。',               custom: 'おすすめ：Hot / 甘さ控えめ' },
+    { id:'d05', cat: 'popular', kanji: '苺', grad:['#a61a3a','#e65a7a'], name: 'いちごみるく生タピオカ',   price: 35, desc: 'フレッシュ苺の果肉ソース。甘酸っぱさともちもちが好相性。', custom: 'おすすめ：氷少なめ / 甘さ30%', badge: 'SEASONAL' },
+    { id:'d06', cat: 'all',     kanji: '烏', grad:['#4a5a2a','#8ca04a'], name: '特選烏龍ミルクティー',     price: 27, desc: '特級茶葉のすっきりした後味。食事のあとにも。',             custom: 'おすすめ：甘さ0% / 氷少なめ' }
+  ];
+
+  const ORDER_OPTIONS = {
+    size:    [ {v:'M', label:'Mサイズ', extra:0}, {v:'L', label:'Lサイズ', extra:3} ],
+    sweet:   [ {v:'0',  label:'0%', extra:0}, {v:'30', label:'30%', extra:0}, {v:'50', label:'50%', extra:0}, {v:'100', label:'100%', extra:0} ],
+    ice:     [ {v:'no', label:'氷なし', extra:0}, {v:'less', label:'氷少なめ', extra:0}, {v:'normal', label:'氷普通', extra:0}, {v:'hot', label:'Hot', extra:0} ],
+    topping: [ {v:'tapi', label:'タピオカ追加', extra:5}, {v:'pudd', label:'プリン', extra:6}, {v:'grass', label:'仙草ゼリー', extra:4} ]
+  };
+  const DEFAULT_SELECTION = { size:'M', sweet:'50', ice:'normal', topping:[] };
+
+  function buildMenu() {
+    const grid = $('#menu-grid');
+    grid.innerHTML = '';
+    items.forEach((item) => {
+      const card = document.createElement('div');
+      card.className = `menu-card reveal ${item.cat}`;
+      card.onclick = () => openModal(item);
+      const badge = item.badge ? `<div class="tag-badge">${item.badge}</div>` : '';
+      card.innerHTML = `
+        <div class="menu-thumb" style="background:linear-gradient(135deg, ${item.grad[0]}, ${item.grad[1]});">${item.kanji}</div>
+        <h3>${item.name}</h3>
+        <div class="price-tag"><span class="ysign">¥</span>${item.price}<span class="unit">元</span></div>
+        ${badge}
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  $$('.filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      $('.filter-btn.active').classList.remove('active');
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      $$('.menu-card').forEach(card => {
+        const ok = (cat === 'all' || card.classList.contains(cat));
+        card.style.display = ok ? 'block' : 'none';
+        if (ok) {
+          card.animate(
+            [{ transform:'translateY(8px)', opacity: 0.0 }, { transform:'translateY(0)', opacity: 1 }],
+            { duration: 380, easing: 'cubic-bezier(0.23,1,0.32,1)' }
+          );
+        }
+      });
+      toast(cat === 'all' ? '全メニューを表示中' : 'カテゴリで絞り込みました');
+    };
+  });
+
+  /***********************
+   * 3) Modal with order options
+   ***********************/
+  let currentItem = null;
+  let currentSel = {...DEFAULT_SELECTION, topping:[]};
+  let currentQty = 1;
+
+  function openModal(item) {
+    currentItem = item;
+    currentSel = {...DEFAULT_SELECTION, topping:[]};
+    currentQty = 1;
+    const body = $('#modal-body');
+    body.innerHTML = `
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+        <div class="menu-thumb" style="background:linear-gradient(135deg, ${item.grad[0]}, ${item.grad[1]}); width:58px; height:58px; font-size:1.6rem; margin:0;">${item.kanji}</div>
+        <div>
+          <span class="section-label" style="text-align:left; font-size:0.6rem; margin-bottom:2px;">${item.cat.toUpperCase()}</span>
+          <h2 style="font-family:'Noto Serif JP'; color:var(--primary); font-size:1.15rem; line-height:1.3;">${item.name}</h2>
+        </div>
+      </div>
+      <p style="font-family:'Montserrat'; font-weight:900; font-size:1.8rem; margin:10px 0; color:var(--primary);" id="modal-price">${rmb(item.price)}</p>
+      <p style="color:#555; font-size:0.85rem; line-height:1.9;">${item.desc}</p>
+      <div style="margin:18px 0 10px; padding:12px; background:var(--sand); border-radius:12px; font-weight:800; color:var(--gold-d); font-size:0.8rem;">
+        ${item.custom}
+      </div>
+
+      <div class="opt-group">
+        <div class="opt-label">サイズ · Size</div>
+        <div class="opt-chips" data-opt="size">
+          ${ORDER_OPTIONS.size.map(o => `<div class="opt-chip ${o.v===currentSel.size?'active':''}" data-val="${o.v}">${o.label}${o.extra?` +¥${o.extra}元`:''}</div>`).join('')}
+        </div>
+      </div>
+      <div class="opt-group">
+        <div class="opt-label">甘さ · Sweetness</div>
+        <div class="opt-chips" data-opt="sweet">
+          ${ORDER_OPTIONS.sweet.map(o => `<div class="opt-chip ${o.v===currentSel.sweet?'active':''}" data-val="${o.v}">${o.label}</div>`).join('')}
+        </div>
+      </div>
+      <div class="opt-group">
+        <div class="opt-label">氷 · 温度 · Ice</div>
+        <div class="opt-chips" data-opt="ice">
+          ${ORDER_OPTIONS.ice.map(o => `<div class="opt-chip ${o.v===currentSel.ice?'active':''}" data-val="${o.v}">${o.label}</div>`).join('')}
+        </div>
+      </div>
+      <div class="opt-group">
+        <div class="opt-label">トッピング · Topping（複数可）</div>
+        <div class="opt-chips" data-opt="topping" data-multi="1">
+          ${ORDER_OPTIONS.topping.map(o => `<div class="opt-chip" data-val="${o.v}">${o.label}${o.extra?` +¥${o.extra}元`:''}</div>`).join('')}
+        </div>
+      </div>
+
+      <div class="qty-row">
+        <div class="lbl">数量 · Quantity</div>
+        <div class="qty-ctrl">
+          <button onclick="changeQty(-1)" aria-label="数量を減らす">−</button>
+          <span id="qty-val">1</span>
+          <button onclick="changeQty(1)" aria-label="数量を増やす">+</button>
+        </div>
+      </div>
+
+      <button class="btn-add" id="btn-add" onclick="addCurrentToCart()">
+        <span>カートに追加</span>
+        <span class="side" id="btn-add-price">${rmb(item.price)}</span>
+      </button>
+      <button onclick="closeModal()" style="width:100%; padding:12px; margin-top:10px; background:none; border:none; color:#999; font-weight:900; cursor:pointer; font-size:0.82rem; letter-spacing:1px;">閉じる</button>
+    `;
+
+    $$('#modal-body .opt-chips').forEach(group => {
+      const opt = group.dataset.opt;
+      const multi = group.dataset.multi === '1';
+      group.querySelectorAll('.opt-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          if (multi) {
+            chip.classList.toggle('active');
+            currentSel[opt] = Array.from(group.querySelectorAll('.opt-chip.active')).map(c => c.dataset.val);
+          } else {
+            group.querySelectorAll('.opt-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentSel[opt] = chip.dataset.val;
+          }
+          updateModalPrice();
+        });
+      });
+    });
+
+    const modal = $('#modal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function changeQty(d){
+    currentQty = clamp(currentQty + d, 1, 20);
+    $('#qty-val').textContent = currentQty;
+    updateModalPrice();
+  }
+  function computeUnitPrice(item, sel){
+    let p = Number(item.price);
+    p += ORDER_OPTIONS.size.find(o=>o.v===sel.size)?.extra || 0;
+    (sel.topping||[]).forEach(tv => { p += ORDER_OPTIONS.topping.find(o=>o.v===tv)?.extra || 0; });
+    return p;
+  }
+  function updateModalPrice(){
+    if (!currentItem) return;
+    const unit = computeUnitPrice(currentItem, currentSel);
+    const total = unit * currentQty;
+    $('#modal-price').textContent = rmb(unit);
+    $('#btn-add-price').textContent = rmb(total);
+  }
+  function closeModal() {
+    const modal = $('#modal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => modal.style.display = 'none', 320);
+  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if ($('#modal').classList.contains('open')) closeModal();
+      else if ($('#cart-drawer').classList.contains('open')) closeCart();
+    }
+  });
+
+  /***********************
+   * 4) CART
+   ***********************/
+  let cart = load(LS.cart, []);
+
+  function addCurrentToCart(){
+    if (!currentItem) return;
+    const unit = computeUnitPrice(currentItem, currentSel);
+    cart.push({
+      id: currentItem.id, kanji: currentItem.kanji, grad: currentItem.grad,
+      name: currentItem.name, unit, qty: currentQty,
+      sel: { ...currentSel, topping: [...(currentSel.topping||[])] }
+    });
+    save(LS.cart, cart);
+    renderCart();
+    closeModal();
+    toast('カートに追加しました');
+    const fab = $('#cart-fab');
+    fab.animate(
+      [{ transform:'scale(1)' }, { transform:'scale(1.16)' }, { transform:'scale(1)' }],
+      { duration: 380, easing: 'cubic-bezier(0.34,1.56,0.64,1)' }
+    );
+  }
+  function removeFromCart(i){
+    cart.splice(i,1);
+    save(LS.cart, cart);
+    renderCart();
+    toast('削除しました');
+  }
+  function updateCartQty(i, d){
+    cart[i].qty = clamp(cart[i].qty + d, 1, 20);
+    save(LS.cart, cart);
+    renderCart();
+  }
+
+  function describeSelection(sel){
+    const bits = [];
+    const sizeLabel = ORDER_OPTIONS.size.find(o=>o.v===sel.size)?.label;
+    if (sizeLabel) bits.push(sizeLabel);
+    const sw = ORDER_OPTIONS.sweet.find(o=>o.v===sel.sweet)?.label; if (sw) bits.push('甘さ '+sw);
+    const ice = ORDER_OPTIONS.ice.find(o=>o.v===sel.ice)?.label; if (ice) bits.push(ice);
+    const tops = (sel.topping||[]).map(v => ORDER_OPTIONS.topping.find(o=>o.v===v)?.label).filter(Boolean);
+    if (tops.length) bits.push('＋' + tops.join('・'));
+    return bits.join(' / ');
+  }
+
+  function renderCart(){
+    const count = cart.reduce((a,c)=>a+c.qty, 0);
+    const badge = $('#cart-badge');
+    badge.textContent = count;
+    badge.dataset.count = count;
+    const fab = $('#cart-fab');
+    fab.classList.toggle('has-items', count > 0);
+
+    const list = $('#cart-list');
+    const empty = $('#cart-empty');
+    const footer = $('#cart-footer');
+
+    if (cart.length === 0){
+      list.innerHTML = '';
+      empty.style.display = 'block';
+      footer.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    footer.style.display = 'block';
+
+    list.innerHTML = cart.map((it, i) => `
+      <div class="cart-row">
+        <div class="thumb" style="background:linear-gradient(135deg, ${it.grad?.[0]||'#b0162f'}, ${it.grad?.[1]||'#7e0d20'});">${it.kanji||'茶'}</div>
+        <div class="info">
+          <div class="name">${it.name}</div>
+          <div class="opts">${describeSelection(it.sel) || ''}</div>
+          <div class="unit">${rmb(it.unit)}</div>
+        </div>
+        <div class="row-right">
+          <div class="qty-ctrl">
+            <button onclick="updateCartQty(${i}, -1)" aria-label="減らす">−</button>
+            <span>${it.qty}</span>
+            <button onclick="updateCartQty(${i}, 1)" aria-label="増やす">+</button>
+          </div>
+          <button class="row-del" onclick="removeFromCart(${i})">削除</button>
+        </div>
+      </div>
+    `).join('');
+
+    const subtotal = cart.reduce((a,c)=>a + c.unit * c.qty, 0);
+    const coupons = load(LS.coupons, 0);
+    $('#coupon-row').hidden = coupons <= 0;
+    const useCoupon = ($('#use-coupon') && $('#use-coupon').checked) && coupons > 0;
+    const couponValue = useCoupon ? Math.max(...cart.map(c => c.unit)) : 0;
+    $('#row-coupon').style.display = useCoupon ? 'flex' : 'none';
+    $('#sum-coupon').textContent = '-' + rmb(couponValue);
+    const grand = Math.max(0, subtotal - couponValue);
+    $('#sum-sub').textContent = rmb(subtotal);
+    $('#sum-grand').textContent = rmb(grand);
+
+    const drinkCount = count;
+    $('#stamp-earn-hint').textContent = `このご注文で スタンプ +${drinkCount} 個`;
+  }
+
+  function openCart(){
+    renderCart();
+    const d = $('#cart-drawer');
+    d.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart(){
+    const d = $('#cart-drawer');
+    d.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  let pickupMin = 15;
+  $$('#pickup-chips .opt-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      $$('#pickup-chips .opt-chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      pickupMin = Number(c.dataset.min);
+    });
+  });
+  document.addEventListener('change', (e) => {
+    if (e.target && e.target.id === 'use-coupon') renderCart();
+  });
+
+  /***********************
+   * 5) CHECKOUT
+   ***********************/
+  function genOrderId(){
+    const d = new Date();
+    const ymd = `${d.getFullYear().toString().slice(-2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+    const rand = Math.floor(Math.random()*900+100);
+    return `KT-${ymd}-${rand}`;
+  }
+
+  function checkout(){
+    if (cart.length === 0) { toast('カートが空です'); return; }
+    const member = load(LS.member, null);
+    if (!member || !member.name) {
+      toast('会員情報（お名前）をご入力ください');
+      smoothScroll('member');
+      closeCart();
+      return;
+    }
+    const drinkCount = cart.reduce((a,c)=>a+c.qty,0);
+    const subtotal = cart.reduce((a,c)=>a + c.unit * c.qty, 0);
+    const coupons = load(LS.coupons, 0);
+    const useCoupon = $('#use-coupon') && $('#use-coupon').checked && coupons > 0;
+    const couponValue = useCoupon ? Math.max(...cart.map(c => c.unit)) : 0;
+    const grand = Math.max(0, subtotal - couponValue);
+
+    const order = {
+      id: genOrderId(),
+      at: Date.now(),
+      pickup_min: pickupMin,
+      items: JSON.parse(JSON.stringify(cart)),
+      subtotal, coupon: couponValue, total: grand,
+      member: { name: member.name, contact: member.contact || '' }
+    };
+    const orders = load(LS.orders, []);
+    orders.unshift(order);
+    save(LS.orders, orders.slice(0, 20));
+    if (useCoupon) save(LS.coupons, Math.max(0, coupons - 1));
+    addStamps(drinkCount);
+    cart = [];
+    save(LS.cart, cart);
+    renderCart();
+    closeCart();
+    renderMember(true);
+
+    const body = $('#modal-body');
+    body.innerHTML = `
+      <div class="confirm-seal">茶</div>
+      <span class="section-label" style="color: var(--gold-d);">ORDER CONFIRMED · 已下单</span>
+      <h2 style="font-family:'Noto Serif JP'; color:var(--primary); font-size:1.25rem; margin-top:4px; text-align:center;">ご注文ありがとうございます</h2>
+      <div class="confirm-ticket">
+        <div style="font-family:'Montserrat'; font-size:0.62rem; letter-spacing:3px; color:#888; text-align:center;">ORDER NO. · 订单号</div>
+        <div class="confirm-order-id">${order.id}</div>
+        <div class="confirm-lines">
+          <div class="row"><span>受け取り目安</span><strong>${pickupMin} 分後</strong></div>
+          <div class="row"><span>ご注文点数</span><strong>${drinkCount} 杯</strong></div>
+          <div class="row"><span>合計金額</span><strong>${rmb(order.total)}</strong></div>
+          <div class="row"><span>お支払い</span><strong>店頭</strong></div>
+        </div>
+      </div>
+      <div style="font-size:0.82rem; line-height:1.8; color:#555; margin-top:16px; text-align:center;">
+        スタンプを <strong style="color:var(--primary)">${drinkCount} 個</strong> 追加しました 🎉<br>
+        ご来店時に、スタッフへ注文番号をお伝えください。
+      </div>
+      <button onclick="closeModal(); smoothScroll('member');" class="btn-add" style="margin-top:18px;">
+        <span>スタンプを確認する</span>
+        <span class="side">→</span>
+      </button>
+      <button onclick="closeModal()" style="width:100%; padding:12px; margin-top:10px; background:none; border:none; color:#999; font-weight:900; cursor:pointer; font-size:0.82rem;">閉じる</button>
+    `;
+    const modal = $('#modal');
+    modal.style.display = 'flex';
+    setTimeout(() => modal.classList.add('open'), 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  /***********************
+   * 6) STAMP / MEMBER
+   ***********************/
+  function addStamps(n){
+    let s = load(LS.stamps, 0);
+    let c = load(LS.coupons, 0);
+    s += n;
+    while (s >= 10){ s -= 10; c += 1; }
+    save(LS.stamps, s);
+    save(LS.coupons, c);
+  }
+  function animateCounter(el, from, to, duration=700){
+    const start = performance.now();
+    function step(ts){
+      const t = clamp((ts - start) / duration, 0, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const v = Math.round(from + (to - from) * eased);
+      el.textContent = v;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function renderMember(animate=false){
+    const s = load(LS.stamps, 0);
+    const c = load(LS.coupons, 0);
+    const countEl = $('#stamp-count');
+    if (animate) {
+      const prev = Number(countEl.textContent) || 0;
+      animateCounter(countEl, prev, s);
+    } else {
+      countEl.textContent = s;
+    }
+    const remain = 10 - s;
+    $('#stamp-hint').innerHTML = c > 0
+      ? `🎁 <strong>1杯無料クーポン ${c} 枚</strong> をお持ちです`
+      : `あと <strong>${remain}</strong> 個で 1杯無料クーポン`;
+
+    const grid = $('#stamp-grid');
+    grid.innerHTML = '';
+    for (let i=0;i<10;i++){
+      const cell = document.createElement('div');
+      const filled = i < s;
+      const isLast = i === 9;
+      cell.className = 'stamp-cell' + (filled ? (isLast ? ' filled reward' : ' filled') : '');
+      cell.textContent = filled ? (isLast ? '★' : '茶') : '';
+      if (animate) cell.style.animationDelay = (i * 60) + 'ms';
+      grid.appendChild(cell);
+    }
+    $('#reward-btn').disabled = c <= 0;
+    $('#reward-btn').textContent = c > 0 ? `🎁 1杯無料クーポンを使う（${c} 枚）` : '🎁 1杯無料クーポンを使う';
+
+    // Member name/no
+    const member = load(LS.member, null);
+    $('#member-display-name').textContent = (member && member.name) ? member.name : 'GUEST';
+    $('#member-no').textContent = member ? ensureMemberNo() : '—— ——';
+
+    // Order history
+    const orders = load(LS.orders, []);
+    const wrap = $('#order-history-wrap');
+    const box = $('#order-history');
+    if (orders.length === 0){ wrap.style.display = 'none'; return; }
+    wrap.style.display = 'block';
+    box.innerHTML = orders.slice(0, 6).map(o => {
+      const d = new Date(o.at);
+      const when = `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+      const items = o.items.map(i => `${i.name} ×${i.qty}`).join('、');
+      return `
+        <div class="history-item">
+          <div class="history-head"><span>${o.id}</span><span>${when}</span></div>
+          <div class="history-body">${items}</div>
+          <div class="history-total">${rmb(o.total)}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  $('#reward-btn').addEventListener('click', () => {
+    const c = load(LS.coupons, 0);
+    if (c <= 0) return;
+    if (cart.length === 0) {
+      toast('先にカートに商品を入れてください');
+      smoothScroll('menu');
+      return;
+    }
+    openCart();
+    setTimeout(() => {
+      const cb = $('#use-coupon');
+      if (cb) { cb.checked = true; renderCart(); toast('クーポンを適用しました'); }
+    }, 300);
+  });
+
+  function saveMember(){
+    const name = $('#member-name').value.trim();
+    const contact = $('#member-contact').value.trim();
+    if (!name) { toast('お名前をご入力ください'); return; }
+    save(LS.member, { name, contact });
+    ensureMemberNo();
+    renderMember();
+    toast('会員情報を保存しました');
+  }
+  function hydrateMemberForm(){
+    const m = load(LS.member, null);
+    if (m) {
+      $('#member-name').value = m.name || '';
+      $('#member-contact').value = m.contact || '';
+    }
+  }
+
+  /***********************
+   * 7) JOIN
+   ***********************/
+  let currentTab = 'recruit';
+  let tabInterval = setInterval(() => {
+    currentTab = (currentTab === 'recruit') ? 'fc' : 'recruit';
+    updateTabUI(currentTab, true);
+  }, 5000);
+  function manualTab(id) {
+    clearInterval(tabInterval);
+    currentTab = id;
+    updateTabUI(id, false);
+  }
+  function updateTabUI(id, auto) {
+    $$('.tab-trigger').forEach(t => t.classList.toggle('active', t.id === 'btn-' + id));
+    $$('.tab-content').forEach(c => c.classList.toggle('active', c.id === id));
+    if (auto) return;
+    toast(id === 'recruit' ? '採用フォームを表示しました' : 'FCフォームを表示しました');
+  }
+  function validateEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+  function sendMail(type) {
+    const targetEmail = "0036oy@gmail.com";
+    let subject, body;
+    if (type === 'recruit') {
+      const name = $('#rec-name').value.trim();
+      const tel = $('#rec-tel').value.trim();
+      const msg = $('#rec-msg').value.trim();
+      if (!name) return toast("お名前をご入力ください。");
+      if (!tel) return toast("電話番号 / WeChat IDをご入力ください。");
+      subject = "スタッフ応募: " + name;
+      body =
+`川崎珍珠奶茶 採用担当者様
+お世話になります。スタッフ応募の件でご連絡いたします。
+【氏名】${name}
+【連絡先】${tel}
+【志望動機・補足】
+${msg || "（未記入）"}
+お忙しいところ恐れ入りますが、どうぞよろしくお願いいたします。`;
+    } else {
+      const name = $('#fc-name').value.trim();
+      const email = $('#fc-email').value.trim();
+      const area = $('#fc-area').value.trim();
+      if (!name) return toast("ご担当者名 / 企業名をご入力ください。");
+      if (!email) return toast("メールアドレスをご入力ください。");
+      if (!validateEmail(email)) return toast("メールアドレスの形式をご確認ください。");
+      subject = "FC資料請求: " + name;
+      body =
+`川崎珍珠奶茶 フランチャイズ担当者様
+お世話になります。フランチャイズ資料の請求でご連絡いたします。
+【企業/担当者】${name}
+【メール】${email}
+【開業希望エリア】${area || "（未定）"}
+可能な範囲で構いませんので、条件やスケジュール等の進め方も併せてご案内いただけますと幸いです。
+何卒よろしくお願いいたします。`;
+    }
+    toast("メール下書きを作成します（メールアプリが開きます）");
+    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  /***********************
+   * 8) SCROLL
+   ***********************/
+  const sections = ['craft','menu','member','join','qa','access'].map(id => $('#'+id));
+  const navButtons = $$('.nav-item');
+  function setActiveNav(id){
+    navButtons.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+  }
+  function onScrollTick(){
+    const s = window.scrollY;
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    $('#pb').style.width = (h > 0 ? (s / h * 100) : 0) + '%';
+    if (s > 50) $('#header').classList.add('scrolled');
+    else $('#header').classList.remove('scrolled');
+    $$('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.9) el.classList.add('active');
+    });
+    const pivot = window.innerHeight * 0.35;
+    let current = 'craft';
+    for (const sec of sections){
+      if (!sec) continue;
+      const top = sec.getBoundingClientRect().top;
+      if (top < pivot) current = sec.id;
+    }
+    setActiveNav(current);
+  }
+  let rafId = null;
+  window.addEventListener('scroll', () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => { onScrollTick(); rafId = null; });
+  }, { passive: true });
+  function smoothScroll(id) {
+    const target = $('#'+id);
+    if (!target) return;
+    const offset = 70;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  /***********************
+   * 9) QA
+   ***********************/
+  const qas = [
+    { q: "支払いはどの方法に対応していますか？", a: "WeChat Pay、Alipay、主要国際カード、人民元現金に対応しております。ご不明点があれば店頭でお声がけください。" },
+    { q: "タピオカの持ち帰り時間は？", a: "最高の食感のため、できれば30分以内のお召し上がりをおすすめしております。時間が空く場合は、氷少なめ等もご提案できます。" },
+    { q: "団体での注文は可能ですか？", a: "はい。10杯以上の場合は、事前にご連絡いただけるとスムーズです。受け取り時間なども柔軟に調整いたします。" },
+    { q: "モバイルオーダーはどう使いますか？", a: "MENU から商品を選んでカートに追加し、右下のカートアイコンから「注文を確定」するだけ。注文番号が発行されますので、ご来店時にスタッフへお伝えください。お支払いは店頭で承ります。" },
+    { q: "スタンプはどう貯まりますか？", a: "モバイルオーダー1杯につき、1スタンプが貯まります。10個たまると、1杯無料クーポンを自動で発行いたします。" },
+    { q: "会員情報やスタンプはどこに保存されますか？", a: "ご利用の端末のブラウザ内のみに保存されます。外部サーバーには送信されませんので、安心してご利用ください。別の端末では引き継がれませんので予めご了承ください。" }
+  ];
+  const qaWrap = $('#qa-container');
+  function buildQA(){
+    qaWrap.innerHTML = '';
+    qas.forEach((qa) => {
+      const div = document.createElement('div');
+      div.className = 'qa-item';
+      div.innerHTML = `
+        <div class="qa-q">
+          <span>${qa.q}</span><span class="plus">＋</span>
+        </div>
+        <div class="qa-a">${qa.a}</div>
+      `;
+      div.querySelector('.qa-q').addEventListener('click', () => { div.classList.toggle('open'); });
+      qaWrap.appendChild(div);
+    });
+  }
+
+  /***********************
+   * 10) Maps
+   ***********************/
+  const MAP_QUERY = "Taikoo Li Sanlitun Beijing";
+  const ADDRESS_TEXT = "北京市朝阳区三里屯路19号院 Taikoo Li 南区";
+  function openGoogleMaps(){
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
+    window.open(url, '_blank', 'noopener');
+  }
+  function copyAddress(){
+    navigator.clipboard?.writeText(ADDRESS_TEXT)
+      .then(() => toast("住所をコピーしました"))
+      .catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = ADDRESS_TEXT;
+        document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); ta.remove();
+        toast("住所をコピーしました");
+      });
+  }
+  function routeFromHere(){
+    if (!navigator.geolocation) { toast("現在地取得に対応していない端末です"); return; }
+    toast("現在地を取得しています…");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const url = `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${encodeURIComponent(MAP_QUERY)}&travelmode=walking`;
+        window.open(url, '_blank', 'noopener');
+      },
+      () => toast("現在地を取得できませんでした（許可をご確認ください）"),
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+    );
+  }
+
+  /***********************
+   * haptic
+   ***********************/
+  function microHaptic(){ if (navigator.vibrate) navigator.vibrate(10); }
+  document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (t.closest('button') || t.closest('.menu-card') || t.closest('.opt-chip')) microHaptic();
+  }, { passive: true });
+
+  /***********************
+   * Init
+   ***********************/
+  window.onload = () => {
+    buildLuxTitle();
+    attachHeroTilt();
+    type();
+    buildMenu();
+    buildQA();
+    hydrateMemberForm();
+    renderMember();
+    renderCart();
+    setTimeout(() => $('#hero .reveal')?.classList.add('active'), 100);
+    onScrollTick();
+  };
+</script>
+</body>
+</html>
